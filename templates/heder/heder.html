@@ -1,0 +1,92 @@
+{% load static %}
+
+<header style="position: absolute; z-index: 99999; width: 100%; background-color: #00000035;">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg custom_nav-container ">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <style>
+          .two:hover {
+            color: #ffbe33;
+          }
+        </style>
+        <span class="two">
+          Экидос
+        </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=""> </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav  mx-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'menu' %}">Меню</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">Рецепт</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'book' %}">Бронировать стол</a>
+          </li>
+        </ul>
+        <div class="user_option">
+          {% if user.is_authenticated %}
+          <li class="nav-item active" style="list-style: none; color:yellow;">
+            <a class="nav-link" style="text-decoration: none; color: #ffbe33;"
+              href="{% url 'register' %}">{{user.username }} <span class="sr-only">(current)</span></a>
+          </li>
+          {% else %}
+          <a href="{% url 'register' %}" class="user_link">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </a>
+          {% endif %}
+          <!-- <form class="form-inline"> -->
+          <!-- <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                <a href="{% url 'search' %}"></a>
+              </button> -->
+          <!-- </form> -->
+          <!-- <a href="" class="order_online">
+              Заказать онлайн
+            </a> --><!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="search-container">
+                  <!-- <form action="{% url 'search' %}" method="get"> -->
+                    <input type="text" name="key" placeholder="Введите поисковый запрос" />
+                    <button name type="submit">Найти</button>
+                  </form>
+                </div>
+                <!-- <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

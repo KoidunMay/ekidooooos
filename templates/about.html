@@ -1,0 +1,58 @@
+{% extends 'homepage.html' %}
+{% load static %}
+
+{% block content %}
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="{% static 'images/hero-bg.jpg' %}" alt="">
+    </div>
+    <!-- header section strats -->
+    {% include 'heder/heder.html' %}
+    <!-- end header section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container  ">
+      {% for item in about %}
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box" style="margin-bottom: 10px; width: 90%;">
+            <img src="{{item.image.url}}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                {{item.name}}
+              </h2>
+            </div>
+            <p>
+          {{item.ingredients}}
+          <!-- {{item.sostav}}
+          {{item.gram}} -->
+            </p>
+            <a href="">
+              Читать далее
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- footer section -->
+  {% include 'footers/footer.html' %}
+  <!-- footer section -->
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'homepage.html' %}
+{% load static %}
+
+{% block content %}
+<body class="sub_page">
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="{% static 'images/hero-bg.jpg' %}" alt="">
+    </div>
+    <!-- header section strats -->
+    {% include 'heder/heder.html' %}
+    <!-- end header section -->
+  </div>
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Бранировать стол
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="{% url 'bron'%}" method="post">
+            {% csrf_token %}
+              <div>
+                <input name="name" type="text" class="form-control" required placeholder="Ваше имя" />
+              </div>
+              <div>
+                <input name="nomer" type="text" class="form-control" required placeholder="Номер телефона" />
+              </div>
+              <select name="stol" class="form-control nice-select wide" required>
+                <option value="" disabled selected>Выбрать стол</option>
+                {%for item in rows%}
+                <option value="{{item.id}}">
+                  {{item.nomer}}
+                 </option>
+                {%endfor%}
+              </select>
+              <div>
+                <input name="count" type="number" required class="form-control">
+                <!-- <select class="form-control nice-select wide">
+                  <option value="" disabled selected>
+                    Сколько человек?
+                  </option>
+                  <option value="">
+                    2
+                  </option>
+                  <option value="">
+                    3
+                  </option>
+                  <option value="">
+                    4
+                  </option>
+                  <option value="">
+                    5
+                  </option>
+                  <option value="">
+                    6
+                  </option>
+                </select> -->
+              </div>
+              <div>
+                <input name="date" type="date" required class="form-control">
+              </div>
+              <div class="btn_box">
+                <button>
+                  Забранируйте сейчас
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!-- <div class="map_container ">
+            <div id="googleMap"></div>
+          </div> -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16069.298988244553!2d72.77965946186603!3d40.53957399643945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bdaea9d7670d5f%3A0xa7d65f9133b42d9e!2z0KIu0KYg0KDQkNCc0JDQl9CQ0J0!5e0!3m2!1sru!2skg!4v1686765892139!5m2!1sru!2skg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end book section -->
+
+  <!-- footer section -->
+  {% include 'footers/footer.html' %}22
+  <!-- footer section -->
+
+</body>
+
+{% endblock %}

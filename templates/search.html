@@ -1,0 +1,62 @@
+<!-- <input style="padding: 20px; width: 400px; border-radius: 10px;outline: 0; border: 1px solid grey; font-size: 20px;" type="text" placeholder="введите что нибуд"  > -->
+
+
+{% extends 'homepage.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.search-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+    </style>
+    <div class="search-container">
+        <h1>Поиск</h1>
+        <form action="{% url 'search' %}" method="get">
+            <input type="text" name="key" placeholder="Введите поисковый запрос" />
+            <button name type="submit">Найти</button>
+        </form>
+    </div>
+    {% for i in products %}
+    {{i.name}}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'homepage.html' %}
+{% load static %}
+
+{% block content %}
+
+<div className="page-container">
+  <div className="content-wrap">
+{% include 'heder/heder.html' %}
+  <style>
+    /* Reset default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Page layout */
+    body {
+      font-family: Arial, sans-serif;
+      /* padding: 20px; */
+      background-image: url('../static/images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .page-container{
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+.content-wrap{
+flex: 1;
+} 
+    /* .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+    } */
+    
+    /* Product list */
+    .product-list {
+      padding: 60px 0;
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+
+    }
+    
+    .product-item {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      width: 20%;
+    }
+    
+    .product-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .product-price {
+      color: #888;
+      margin-bottom: 15px;
+    }
+    
+    .product-description {
+      margin-bottom: 15px;
+    }
+    
+    .product-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+  </style>
+</head>
+<div style="height: calc(100vh - 200px);">
+  <div class="container">
+    <div>
+      <h1>Favorite Products</h1>
+      <ul class="product-list">
+        <li class="product-item">
+          <h2 class="product-title">{{ item.productList.name }}</h2>
+          <p class="product-price">{{ item.productList.prise }}</p>
+          <img class="product-image" src="{{ item.productList.image.url }}" alt="Product Image">
+          <p class="product-description">{{ item.productObject.description }} Количество-<span id="count{{item.id}}" >1</span></p>
+          <input class="input" onclick="inc('-',{{item.id}})" type="button" value="-">
+          <input class="input" onclick="inc('+',{{item.id}})" type="button" value="+">
+          <input class="input"   type="button" value="удалить">
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  {% include 'footers/footer.html' %}
+  </div>
+</body>
+</html>
+{% endblock %}
